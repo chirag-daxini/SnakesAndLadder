@@ -1,4 +1,4 @@
-Console based SnakeAndLadder game.
+Console based SnakesAndLadder game.
 
 Source code is divided into 4 projects
 1) SnakeAndLadder - This is main entry point of the game. This project contains host builder for the game.
