@@ -39,15 +39,15 @@ namespace SnakesAndLadder.Domain
                 {
                     UpdatePosition(currentPlayer, nextToken);
                     currentPlayer.IsFirstMove = false;
+
+                    if (currentPlayer.CurrentCellPosition == _boardService.Board.Length)
+                    {
+                        Console.WriteLine($"Congratulations {currentPlayer.PlayerName} you Won !!!");
+                        break;
+                    }
                     currentPlayer = GetNextPlayer(currentPlayer);
                 }
-
             }
-
-            foreach (Player p in _playerService.Players)
-                Console.WriteLine($"{p.PlayerName} is at {p.CurrentCellPosition}");
-
-            Console.WriteLine($"Player {currentPlayer.PlayerName} Won !!!");
         }
 
         private Player GetNextPlayer(Player currPlayer)
