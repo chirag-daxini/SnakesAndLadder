@@ -6,5 +6,6 @@
         public Ladder[] Ladders { get; set; }
 
         public Snake[] Snakes { get; set; }
+        public int NoOfPlayers { get; set; }
     }
 }
