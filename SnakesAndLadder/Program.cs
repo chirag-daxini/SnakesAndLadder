@@ -30,6 +30,8 @@ namespace SnakesAndLadder
                     services.AddHostedService<Startup>();
                     services.AddScoped<IBoardService, BoardService>();
                     services.AddScoped<IPlayerService, PlayerService>();
+                    services.AddScoped<ITokenService, TokenService>();
+                    services.AddScoped<IGameService, GameService>();
                     services.Configure<ConsoleLifetimeOptions>(options => options.SuppressStatusMessages = true);
                     services.AddSingleton(settings);
                 }).ConfigureAppConfiguration(builder =>

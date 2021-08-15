@@ -12,11 +12,13 @@ namespace SnakesAndLadder
         private readonly IBoardService _boardService;
         private readonly GameSettings _settings;
         private readonly IPlayerService _playerService;
-        public Startup(IBoardService boardService, IPlayerService playerService, GameSettings gameSettings)
+        private readonly IGameService _gameService;
+        public Startup(IBoardService boardService, IPlayerService playerService, IGameService gameService, GameSettings gameSettings)
         {
             _boardService = boardService;
             _settings = gameSettings;
             _playerService = playerService;
+            _gameService = gameService;
         }
         public async Task StartAsync(CancellationToken cancellationToken)
         {
@@ -48,12 +50,14 @@ namespace SnakesAndLadder
                 _playerService.AssignPlayers(player);
             }
 
+            _gameService.StartGame();
 
+            Console.Read();
         }
 
         public async Task StopAsync(CancellationToken cancellationToken)
         {
-
+            Console.WriteLine("Exiting from game");
         }
     }
 }

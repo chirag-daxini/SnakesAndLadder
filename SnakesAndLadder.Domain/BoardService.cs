@@ -5,13 +5,14 @@ namespace SnakesAndLadder.Domain
 {
     public interface IBoardService
     {
+        Cell[] Board { get; set; }
         void CreateBoard(int boardSize);
         void AddLadder(Ladder ladder);
         void AddSnake(Snake snake);
     }
     public class BoardService : IBoardService
     {
-        public Cell[] Board { get; private set; }
+        public Cell[] Board { get; set; }
 
         public BoardService()
         {

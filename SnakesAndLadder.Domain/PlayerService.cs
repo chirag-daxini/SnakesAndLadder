@@ -6,6 +6,7 @@ namespace SnakesAndLadder.Domain
     public interface IPlayerService
     {
         void AssignPlayers(Player player);
+        List<Player> Players { get; set; }
     }
     public class PlayerService : IPlayerService
     {
