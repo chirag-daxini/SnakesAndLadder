@@ -22,11 +22,24 @@ namespace SnakesAndLadder
             Console.WriteLine($"Creating Game board with {_settings.BoardSize}");
             _boardService.CreateBoard(_settings.BoardSize);
 
+            Console.WriteLine("Adding ladders on game board");
+            for (int i = 0; i < _settings.Ladders.Length; i++)
+            {
+                var ladderConfig = _settings.Ladders[i];
+                _boardService.AddLadder(ladderConfig);
+            }
+
+            Console.WriteLine("Adding snakes on game board");
+            for (int i = 0; i < _settings.Snakes.Length; i++)
+            {
+                var snakeConfig = _settings.Snakes[i];
+                _boardService.AddSnake(snakeConfig);
+            }
         }
 
-        public Task StopAsync(CancellationToken cancellationToken)
+        public async Task StopAsync(CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+
         }
     }
 }
