@@ -11,5 +11,6 @@
         public bool IsTheWinner { get; set; } = false;
 
         public int FirstDice { get; set; } = 0;
+        public bool IsFirstMove { get; set; } = true;
     }
 }

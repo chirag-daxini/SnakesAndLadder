@@ -24,7 +24,7 @@ namespace SnakesAndLadder
         {
             Console.WriteLine("Welecome to Snakes & Ladder Game.");
 
-            Console.WriteLine($"Intializing Game board with {_settings.BoardSize}");
+            Console.WriteLine($"Intializing board with {_settings.BoardSize}");
             _boardService.CreateBoard(_settings.BoardSize);
 
             Console.WriteLine("Adding ladders on game board");

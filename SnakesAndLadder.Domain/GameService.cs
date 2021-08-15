@@ -24,16 +24,24 @@ namespace SnakesAndLadder.Domain
         }
         public void StartGame()
         {
-            bool isFirstMove = true;
             currentPlayer = _playerService.Players.First();
 
             while (currentPlayer.CurrentCellPosition != _boardService.Board.Length)
             {
-                if (!isFirstMove)
-                    currentPlayer = NextChance(currentPlayer);
+                var nextToken = _tokenService.GetNextToken();
 
-                isFirstMove = false;
-                UpdatePosition(currentPlayer, _tokenService.GetNextToken());
+                if (currentPlayer.IsFirstMove && nextToken != 1)
+                {
+                    Console.WriteLine($"{currentPlayer.PlayerName} can't move untill intial token is 1");
+                    currentPlayer = NextChance(currentPlayer);
+                }
+                else
+                {
+                    UpdatePosition(currentPlayer, nextToken);
+                    currentPlayer.IsFirstMove = false;
+                    currentPlayer = NextChance(currentPlayer);
+                }
+
             }
 
             foreach (Player p in _playerService.Players)
