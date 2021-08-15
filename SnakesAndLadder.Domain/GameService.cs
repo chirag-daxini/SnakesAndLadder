@@ -30,16 +30,16 @@ namespace SnakesAndLadder.Domain
             {
                 var nextToken = _tokenService.GetNextToken();
 
-                if (currentPlayer.IsFirstMove && nextToken != 1)
+                if (currentPlayer.IsFirstMove && nextToken != _gameSettings.IntialToken)
                 {
-                    Console.WriteLine($"{currentPlayer.PlayerName} can't move untill intial token is 1");
-                    currentPlayer = NextChance(currentPlayer);
+                    Console.WriteLine($"{currentPlayer.PlayerName} stays at {currentPlayer.CurrentCellPosition} untill intial token is {_gameSettings.IntialToken}");
+                    currentPlayer = GetNextPlayer(currentPlayer);
                 }
                 else
                 {
                     UpdatePosition(currentPlayer, nextToken);
                     currentPlayer.IsFirstMove = false;
-                    currentPlayer = NextChance(currentPlayer);
+                    currentPlayer = GetNextPlayer(currentPlayer);
                 }
 
             }
@@ -50,7 +50,7 @@ namespace SnakesAndLadder.Domain
             Console.WriteLine($"Player {currentPlayer.PlayerName} Won !!!");
         }
 
-        private Player NextChance(Player currPlayer)
+        private Player GetNextPlayer(Player currPlayer)
         {
             Player nextPlayer;
 

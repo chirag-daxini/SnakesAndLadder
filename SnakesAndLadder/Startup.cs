@@ -49,7 +49,7 @@ namespace SnakesAndLadder
                 var player = new Player() { PlayerName = name };
                 _playerService.AssignPlayers(player);
             }
-
+            Console.WriteLine("=============================================================================");
             _gameService.StartGame();
 
             Console.Read();
